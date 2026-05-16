@@ -1,0 +1,54 @@
+# Compiler and flags
+FC = mpif90
+FFLAGS = -g -O2 -fopenmp -fno-fast-math -Wall -Wextra -Wunused-variable -Wunused-dummy-argument
+TARGET = grit.x
+
+# Source files
+MODULE_SRC = modmain.f90 utils.f90
+MAIN_SRC   = grit.f90
+SOURCES    = $(MODULE_SRC) $(MAIN_SRC)
+
+# Object files (automatically derived from source files)
+OBJECTS = $(SOURCES:.f90=.o)
+
+# Module files
+MODULE_FILES = modmain.mod utils.mod
+
+# Default target
+all: $(TARGET)
+
+# Build the executable
+$(TARGET): $(OBJECTS)
+	$(FC) $(FFLAGS) -o $(TARGET) $(OBJECTS)
+
+# Build object files with proper dependencies
+grit.o: grit.f90 utils.mod
+	$(FC) $(FFLAGS) -c grit.f90
+
+utils.o: utils.f90 modmain.mod
+	$(FC) $(FFLAGS) -c utils.f90
+
+modmain.o: modmain.f90
+	$(FC) $(FFLAGS) -c modmain.f90
+
+# Module dependencies
+modmain.mod: modmain.o
+utils.mod: utils.o
+
+# Clean up generated files
+clean:
+	rm -f $(TARGET) $(OBJECTS) $(MODULE_FILES)
+
+# Rebuild everything from scratch
+rebuild: clean all
+
+# Show help
+help:
+	@echo "Available targets:"
+	@echo "  all     - Build the program (default)"
+	@echo "  clean   - Remove generated files"
+	@echo "  rebuild - Clean and build"
+	@echo "  help    - Show this help"
+
+# Declare phony targets
+.PHONY: all clean rebuild help
