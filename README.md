@@ -1,10 +1,11 @@
 # Sebastians_GRIT
 GRIT-Code ([Gr]een-Functions for [I]nteracting [T]hermodynamics)
 
+===============
 
-+ --------------- +
-| General Remarks |
-+ --------------- +
+General Remarks
+
+===============
 
 This code is at the very end of a relatively long chain of software packages (Quantum Espresso, Wannier90, Wannier-Tools, Electron-Phonon-Wannier and Python for the post-processing of the individual steps).
 
@@ -12,9 +13,11 @@ It is therefore essential to read and understand the loaders and the input-files
 
 
 
-+ --------------- +
-| Useful Commands |
-+ --------------- +
+===================
+
+Useful Commands
+
+==================
 
 
 In order to clean the directory of any executables
