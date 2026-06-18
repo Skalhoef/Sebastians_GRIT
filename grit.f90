@@ -422,8 +422,14 @@ program grit
                 write(*,*)
                 write(*,*) "- Specific heat values written to: ", trim(c_V_per_uc_filename)
             end if
+
+            if (interacting) then 
+                T_filename = trim(file_tree)//"GRIT_temperature_values_interacting.txt"
+            else if (.not. interacting) then
+                T_filename = trim(file_tree)//"GRIT_temperature_values_noninteracting.txt"
+            end if
             
-            T_filename = trim(file_tree)//"GRIT_temperature_values.txt"
+            
             open(newunit=unit, file=T_filename, status='replace', action='write', iostat=ios)
             if (ios /= 0) then
                 write(*,*) "Warning: Could not open file for writing: ", trim(T_filename)

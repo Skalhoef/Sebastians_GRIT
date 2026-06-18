@@ -1695,9 +1695,9 @@ contains
     ! Subroutines for Specific Heat Capacity !
     ! ====================================== !
 
-    ! ============================= !
+    ! ----------------------------- !
     ! Chemical Potential Derivative !
-    ! ============================= !
+    ! ----------------------------- !
 
     function partialT_F_over_dE_i(E, T, mu, close2E_F) result(partialT_F_over_dE)
         real(dp), intent(in) :: E, T, mu 
@@ -2007,9 +2007,9 @@ contains
 
 
 
-    ! ================================================= !
+    ! ------------------------------------------------- !
     ! Electronic Contributions (Temperature Derivative) !
-    ! ================================================= !
+    ! ------------------------------------------------- !
 
     function partial_T_dH_el_per_UC_over_dE_i(E, T, mu, close2E_F) result(pT_dH_el_over_dE)
         real(dp), intent(in) :: E, T, mu
@@ -2221,9 +2221,9 @@ contains
 
 
 
-    ! ======================================================== !
+    ! -------------------------------------------------------- !
     ! Electronic Contributions (Chemical Potential Derivative) !
-    ! ======================================================== !
+    ! -------------------------------------------------------- !
 
     function partial_mu_dH_el_per_UC_over_dE_i(E, T, mu, close2E_F) result(pmu_dH_el_over_dE)
         real(dp), intent(in) :: E, T, mu 
@@ -2427,9 +2427,9 @@ contains
 
 
 
-    ! ============================================================== !
+    ! -------------------------------------------------------------- !
     ! Non-Interacting Phononic Contribution with Gaussian Broadening !
-    ! ============================================================== !
+    ! -------------------------------------------------------------- !
 
     ! function partial_T_dH_ph0_per_UC_over_dE_i(E, T) result(pT_dH_el_over_dE)
     !     real(dp), intent(in) :: E, T
@@ -2440,8 +2440,8 @@ contains
     !     real(dp)    :: beta, bose_factor, coupling_prefactor, epsilon_mk, epsilon_kplusq, factor1, fermi,  & 
     !                    local_sum_val, numerator1, numerator2, prefactor, pTSE_numerator1, pTSE_numerator2, &
     !                    pT_dH_el_over_dE, sum_val 
-! 
-! 
+    ! 
+    ! 
     !     ! Note: Prefactor of 2 because of spin-degeneracy
     !     beta = 1.0 / (k_B * T)
     !     prefactor = -2.0 / (k_B * pi * T ** 2 * real(Nk_cube)) * fermi_function(E, T)
@@ -2449,24 +2449,24 @@ contains
     !     
     !     sum_val = 0.0_dp
     !     local_sum_val = 0.0
-! 
+    ! 
     !     do i_q = 1, Nq_tot_SE
     !         do nu = 1, n_branches
     !             bose_factor = bose_function(SE_omega_arr(nu, i_q) * 1.0e-3_dp, T)
-! 
-! 
+    ! 
+    ! 
     !             G_ret_mk = 1.0 / (cmplx(E, eta, kind=dp) - (epsilon_mk + Sigma - mu))
-! 
+    ! 
     !             local_sum_val = local_sum_val &
     !                             + epsilon_mk * (factor1 * aimag(G_ret_mk) &
     !                                         - aimag(G_ret_mk**2 * kBT2_dT_Sigma))
     !         end do
     !     end do
-! 
-! 
+    ! 
+    ! 
     !     ! Sum contributions from all MPI processes
     !     call MPI_Allreduce(local_sum_val, sum_val, 1, MPI_DOUBLE_PRECISION, MPI_SUM, MPI_COMM_WORLD, mpi_ierr)
-! 
+    ! 
     !     pT_dH_el_over_dE = prefactor * sum_val
     ! end function partial_T_dH_ph0_per_UC_over_dE_i
 
@@ -2536,12 +2536,11 @@ contains
         deallocate(integrand)
     end function calc_partial_T_H_ph0_per_UC
 
- 
 
 
-    ! ====================== !
+    ! ---------------------- !
     ! Phononic Contributions !
-    ! ====================== !
+    ! ---------------------- !
 
     function calc_partial_T_H_ph_0_per_UC(T) result(pT_H_ph_0_per_UC)
         real(dp), intent(in) :: T

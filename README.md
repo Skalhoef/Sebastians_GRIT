@@ -9,13 +9,25 @@ General Remarks
 
 This code is at the very end of a relatively long chain of software packages (Quantum Espresso, Wannier90, Wannier-Tools, Electron-Phonon-Wannier and Python for the post-processing of the individual steps).
 
-It is therefore essential to read and understand the loaders and the input-files to understand how the code expects certain numbers (e.g. couplings-constants or band-numbers) of individual materials to be stored. Example-files might be added in the future (especially if requested).
+One needs to compute
 
+- Fermi-energy with a nscf calculation (QE)
+- Electronic energies on a fine grid (either WT or EPW)
+- Phononic energies on a fine grid (either QE or EPW)
+- Electron-phonon-couplings on a fine grid (EPW)
+
+The original EPW-code doesn't support the functionality of printing the couplings to file. Therefore, use 
+
+https://github.com/Skalhoef/Sebastians_Personalized_QE_n_EPW_Codes.git 
+
+with input flags "print_fine_Fermi = .true." and "prtgkk_sebbe = .true.".
+
+There are several example-values for various materials (metals and insulators) in the code.
 
 
 ===================
 
-Useful Commands
+Commands for compiling and running the code
 
 ==================
 
