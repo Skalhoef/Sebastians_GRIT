@@ -11,9 +11,9 @@ module modmain
     ! Structure !
     ! --------- !
     
-    character(len=20) :: structure_name = "Ag_Fm3m"
+    ! character(len=20) :: structure_name = "Ag_Fm3m"
     ! character(len=20) :: structure_name = "Cs_Im3m"
-    ! character(len=20) :: structure_name = "Pb_Fm3m"
+    character(len=20) :: structure_name = "Pb_Fm3m"
 
     ! character(len=20) :: structure_name = "Cu_Fm3m"
     ! character(len=20) :: structure_name = "Au_Fm3m"
@@ -38,7 +38,7 @@ module modmain
     logical, parameter :: symmetrize                               = .true.   ! Symmetrize the uniform couplings "by hand" to fix small numerical asymmetries (only needed if create_binary = .true.)
     logical, parameter :: calc_N_states_per_UC_mu_eq_E_F_T_eq_zero = .true.   ! Calculate number of states from mu = E_F at T = 0 K
     logical, parameter :: calc_N_per_UC_mu_eq_E_F_T_eq_zero        = .true.   ! Calculate particle number per UC from mu = E_F at T = 0 K
-    logical, parameter :: calc_mu_vs_T                             = .false.  ! Calculate chemical potential vs Temperature
+    logical, parameter :: calc_mu_vs_T                             = .true.   ! Calculate chemical potential vs Temperature
     logical, parameter :: calc_c_V_per_UC                          = .true.   ! Calculate specific heat capacity vs Temperature
     logical, parameter :: calc_gamma                               = .false.  ! Calculate electronic coefficient of specific heat capacity
     
@@ -337,8 +337,8 @@ contains
             T_max      =  100.0
             n_temp     =  30
         case("Pb_Fm3m")
-            r = 1; N_bnd = 1; n_UC = 2
-            E_F        =  11.0338 
+            r = 1; N_bnd = 3; n_UC = 2
+            E_F        =  12.6068 
             eta        =   0.13_dp
             Nk         =  40
             Nq         =  60
