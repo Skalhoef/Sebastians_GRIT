@@ -37,7 +37,6 @@ flowchart LR
     W90 --> EPW[EPW / WannierTools]
     EPW --> DATA[Fine-grid energies, phonons, and couplings]
     DATA --> GRIT[GRIT]
-    GRIT --> OUT[Chemical potential and specific heat vs temperature]
 ```
 
 GRIT consumes the following quantities:
